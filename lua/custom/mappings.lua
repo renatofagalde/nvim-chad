@@ -50,4 +50,12 @@ M.gopher = {
   }
 }
 
+M.general = {
+  i = {
+    ["jk"] = {
+      "<ESC>",
+      "Exit insert mode with jk"
+    }
+  }
+}
 return M
