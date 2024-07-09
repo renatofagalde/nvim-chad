@@ -48,6 +48,24 @@ local plugins = {
       vim.cmd [[silent! GoInstallDeps]]
     end,
   },
+  {
+    "numToStr/Comment.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+    },
+    config = function(_, opts)
+      -- Importar o plugin de comentários
+      local comment = require("Comment")
+      local ts_context_commentstring = require("ts_context_commentstring.integrations.comment_nvim")
+
+      -- Configurar o plugin de comentários
+      comment.setup({
+        -- Para comentar arquivos tsx, jsx, svelte, html
+        pre_hook = ts_context_commentstring.create_pre_hook(),
+      })
+    end,
+  },
 }
 
 
